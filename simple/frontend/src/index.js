@@ -43,6 +43,6 @@ window.addEventListener('popstate', () => {
   router();
 });
 
-window.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   router();
 });
