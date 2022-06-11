@@ -23,11 +23,28 @@ class Router {
   }
 
   addPageLoad() {
-    document.addEventListener('DOMContentLoaded', () => {});
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => {
+        this.route();
+      },
+      {
+        once: true,
+      },
+    );
   }
 
   addClickLink() {
-    this.$router.addEventListener('click', () => {});
+    this.$router.addEventListener('click', (e) => {
+      const closest = e.target.closest('a[route]');
+      if (!closest) {
+        return;
+      }
+
+      e.preventDefault();
+      const path = closest.getAttribute('href');
+      this.navigate(path);
+    });
   }
 
   addPopState() {
@@ -51,4 +68,18 @@ class Router {
 
     this.$page.innerHTML = this.notFound.view();
   }
+
+  navigate = (value, state = {}) => {
+    if (typeof value === 'string') {
+      window.history.pushState(state, null, value);
+    }
+
+    if (typeof value === 'number') {
+      window.history.go(value);
+    }
+
+    this.route();
+  };
 }
+
+export default Router;
