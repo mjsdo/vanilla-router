@@ -64,7 +64,7 @@ class Router {
       }
 
       this.context.setState({ params });
-      this.$page.innerHTML = view();
+      this.$page.innerHTML = view(params);
       return;
     }
 
