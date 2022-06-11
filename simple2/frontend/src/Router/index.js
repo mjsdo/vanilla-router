@@ -48,7 +48,9 @@ class Router {
   }
 
   addPopState() {
-    window.addEventListener('popstate', () => {});
+    window.addEventListener('popstate', () => {
+      this.route();
+    });
   }
 
   route() {
