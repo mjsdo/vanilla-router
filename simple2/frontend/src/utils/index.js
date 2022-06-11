@@ -1,4 +1,4 @@
-const getPath = () => window.location.pathnam;
+const getPath = () => window.location.pathname;
 
 const getQueryParmas = () => {
   const output = {};
